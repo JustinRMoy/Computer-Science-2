@@ -1,0 +1,23 @@
+public void  reBalance2(){                           //FIXME COMPLETE
+
+        SkipNode hold = head.next.get(0);
+        head.next = null;
+        head.next = new ArrayList<SkipNode>(Collections.nCopies(maxHeight, null));
+        SkipNode tracker = head;
+        tracker.next.set(0, hold);
+        T temp;
+        rebalancing = true;
+
+        while(tracker.next.get(0) != null){
+            temp = tracker.next.get(0).key;
+            noBalRemove(temp);
+            noBalAdd(temp);
+            if(keepTrail) {
+                trail = trail.next.get(0);
+                keepTrail = false;
+            }
+            tracker = tracker.next.get(0);
+        }
+
+        rebalancing = false;
+    }
